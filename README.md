@@ -181,10 +181,10 @@ See the README.md file in the ports/stm32/ directory for further details.
 The esp32 version
 -----------------
 
-git clone https://github.com/micropython/micropython.git
-cd micropython
+    $ git clone https://github.com/micropython/micropython.git
+    $ cd micropython
 
-git submodule update --init lib/axtls lib/berkeley-db-1.xx
+    $ git submodule update --init lib/axtls lib/berkeley-db-1.xx
 
     $ cd mpy-cross
     $ make
