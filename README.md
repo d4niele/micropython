@@ -177,6 +177,22 @@ does not work it may be because you don't have the correct permissions, and
 need to use `sudo make deploy`.
 See the README.md file in the ports/stm32/ directory for further details.
 
+
+The esp32 version
+-----------------
+
+git clone https://github.com/micropython/micropython.git
+cd micropython
+
+git submodule update --init lib/axtls lib/berkeley-db-1.xx
+
+cd mpy-cross
+make
+cd ..
+
+cd ports/esp32/
+make USER_C_MODULES=user_modules/st7735_mpy/st7735/micropython.cmake
+
 Contributing
 ------------
 
