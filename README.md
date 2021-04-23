@@ -186,12 +186,12 @@ cd micropython
 
 git submodule update --init lib/axtls lib/berkeley-db-1.xx
 
-cd mpy-cross
-make
-cd ..
+  $ cd mpy-cross
+  $ make
+  $ cd ..
 
-cd ports/esp32/
-make USER_C_MODULES=user_modules/st7735_mpy/st7735/micropython.cmake
+  $ cd ports/esp32/
+  $ make USER_C_MODULES=user_modules/st7735_mpy/st7735/micropython.cmake
 
 Contributing
 ------------
