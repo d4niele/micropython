@@ -2,9 +2,7 @@
 
 The MicroPython project
 =======================
-<p align="center">
-  <img src="https://raw.githubusercontent.com/micropython/micropython/master/logo/upython-with-micro.jpg" alt="MicroPython Logo"/>
-</p>
+
 
 This is the MicroPython project, which aims to put an implementation
 of Python 3.x on microcontrollers and small embedded systems.
@@ -75,45 +73,7 @@ a port.  To build mpy-cross use:
     $ cd mpy-cross
     $ make
 
-The Unix version
-----------------
 
-The "unix" port requires a standard Unix environment with gcc and GNU make.
-x86 and x64 architectures are supported (i.e. x86 32- and 64-bit), as well
-as ARM and MIPS. Making full-featured port to another architecture requires
-writing some assembly code for the exception handling and garbage collection.
-Alternatively, fallback implementation based on setjmp/longjmp can be used.
-
-To build (see section below for required dependencies):
-
-    $ cd ports/unix
-    $ make submodules
-    $ make
-
-Then to give it a try:
-
-    $ ./micropython
-    >>> list(5 * x + y for x in range(10) for y in [4, 2, 1])
-
-Use `CTRL-D` (i.e. EOF) to exit the shell.
-Learn about command-line options (in particular, how to increase heap size
-which may be needed for larger applications):
-
-    $ ./micropython -h
-
-Run complete testsuite:
-
-    $ make test
-
-Unix version comes with a builtin package manager called upip, e.g.:
-
-    $ ./micropython -m upip install micropython-pystone
-    $ ./micropython -m pystone
-
-Browse available modules on
-[PyPI](https://pypi.python.org/pypi?%3Aaction=search&term=micropython).
-Standard library modules come from
-[micropython-lib](https://github.com/micropython/micropython-lib) project.
 
 External dependencies
 ---------------------
@@ -177,12 +137,19 @@ does not work it may be because you don't have the correct permissions, and
 need to use `sudo make deploy`.
 See the README.md file in the ports/stm32/ directory for further details.
 
-Contributing
-------------
 
-MicroPython is an open-source project and welcomes contributions. To be
-productive, please be sure to follow the
-[Contributors' Guidelines](https://github.com/micropython/micropython/wiki/ContributorGuidelines)
-and the [Code Conventions](https://github.com/micropython/micropython/blob/master/CODECONVENTIONS.md).
-Note that MicroPython is licenced under the MIT license, and all contributions
-should follow this license.
+The esp32 version
+-----------------
+
+    $ git clone https://github.com/micropython/micropython.git
+    $ cd micropython
+
+    $ git submodule update --init lib/axtls lib/berkeley-db-1.xx
+
+    $ cd mpy-cross
+    $ make
+    $ cd ..
+
+    $ cd ports/esp32/
+    $ make USER_C_MODULES=user_modules/st7735_mpy/st7735/micropython.cmake
+
